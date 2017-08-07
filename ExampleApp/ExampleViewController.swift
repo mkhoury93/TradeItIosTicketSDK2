@@ -337,6 +337,10 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
                 label: "Yahoo",
                 actions: [
                     YahooAction(
+                        label: "Purple!",
+                        action: self.purple
+                    ),
+                    YahooAction(
                         label: "OAuth Flow",
                         action: {
                             TradeItSDK.yahooLauncher.launchOAuth(fromViewController: self.advancedViewController)
@@ -487,6 +491,72 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
             let numericValue = NSDecimalNumber.init(string: num)
             print("=====> numericValue: [\(num)] -> [\(numericValue)] \(numericValue == NSDecimalNumber.notANumber)")
         }
+    }
+
+    class PurpleViewController: UIViewController {
+        override func viewDidLoad() {
+            super.viewDidLoad()
+        }
+    }
+
+    private func purple() {
+        let pvc = PurpleViewController()
+        self.present(pvc, animated: true, completion: nil)
+/*
+         @interface YFTopGradientView : UIView
+         @end
+
+         @implementation YFTopGradientView
+
+         + (Class)layerClass {
+            return [CAGradientLayer class];
+         }
+
+         - (instancetype)initWithFrame:(CGRect)frame {
+             self = [super initWithFrame:frame];
+             if (self) {
+                 CAGradientLayer *layer = (CAGradientLayer *)self.layer;
+
+                 layer.colors = @[ (id)[UIColor colorWithWhite:0.0 alpha:0.56].CGColor,
+                 (id)[UIColor colorWithWhite:0.0 alpha:0.21].CGColor,
+                 (id)[UIColor clearColor].CGColor ];
+
+                 layer.locations = @[ @0.0, @0.5, @0.85 ];
+
+                 layer.startPoint = CGPointMake(0.5, 0.0);
+
+                 layer.endPoint = CGPointMake(0.5, 1.0);
+            }
+            return self;
+         }
+         
+         @end
+         
+         =====================
+         
+         [self.backgroundConstraints addObject:[self.topGradient.topAnchor constraintEqualToAnchor:self.view.topAnchor]];
+         [self.backgroundConstraints addObject:[self.topGradient.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]];
+         [self.backgroundConstraints addObject:[self.topGradient.widthAnchor constraintEqualToAnchor:self.view.widthAnchor]];
+         // Set gradient height to (navigation bar + status bar) heights. Can this be represented dynamically in AL?
+         [self.backgroundConstraints addObject:[self.topGradient.heightAnchor constraintEqualToConstant:64.0]];
+         
+         ======================
+         
+         @implementation YFNavigationBar
+
+         - (instancetype)initWithFrame:(CGRect)frame {
+             self = [super initWithFrame:frame];
+             if (self) {
+                 // Make the navigation bar fully transparent
+                 UIImage *image = [UIImage new];
+                 [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+                 [self setShadowImage:image];
+             }
+             return self;
+         }
+         
+         @end
+ */
     }
 
     private func manualBuildLinkedBroker() {
